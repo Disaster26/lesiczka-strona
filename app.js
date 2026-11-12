@@ -65,7 +65,7 @@
       f.addEventListener('click',function(){
         var k=f.dataset.f;
         g.querySelectorAll('.filtr').forEach(function(x){x.setAttribute('aria-pressed',String(x===f))});
-        zakres.querySelectorAll('[data-k]').forEach(function(t){t.hidden=!!k&&t.dataset.k!==k});
+        zakres.querySelectorAll('[data-k]').forEach(function(t){t.hidden=t.hasAttribute('data-tylko')?(!k||t.dataset.k!==k):(!!k&&t.dataset.k!==k)});
         zakres.querySelectorAll('[data-grupa]').forEach(function(gr){gr.hidden=![].some.call(gr.querySelectorAll('[data-k]'),function(t){return !t.hidden})});
         var p=zakres.querySelector('details.pozost');if(p&&k)p.open=true;
       });
